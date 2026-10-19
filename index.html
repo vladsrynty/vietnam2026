@@ -62,7 +62,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -114,9 +114,9 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 1350px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
     .tab-content {
@@ -148,11 +148,45 @@
       border: 1px solid #bae6fd;
     }
 
+    /* Split layout for Itinerary Tab */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sticky Map Container */
+    .map-sticky-container {
+      position: sticky;
+      top: 5rem;
+    }
+
+    #map {
+      width: 100%;
+      height: 600px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      z-index: 10;
+    }
+
     /* Clickable Timeline Item */
+    .timeline-container {
+      max-height: 750px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
     .timeline-item {
       display: flex;
-      gap: 1.25rem;
-      padding: 1rem;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
       margin-bottom: 0.75rem;
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
@@ -168,10 +202,10 @@
     }
 
     .timeline-date {
-      min-width: 110px;
+      min-width: 95px;
       font-weight: 700;
       color: var(--primary-dark);
-      font-size: 1rem;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
     }
@@ -181,9 +215,9 @@
     }
 
     .timeline-content h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
       color: var(--text-main);
     }
 
@@ -191,11 +225,11 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.2rem;
     }
 
     .timeline-content li {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
 
@@ -232,15 +266,6 @@
       font-size: 1rem;
       margin-bottom: 0.35rem;
       color: var(--text-main);
-    }
-
-    /* Map Container */
-    #map {
-      width: 100%;
-      height: 480px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      z-index: 10;
     }
 
     /* Budget Table Styling */
@@ -310,8 +335,7 @@
   </header>
 
   <nav role="tablist">
-    <button class="tab-btn active" onclick="switchTab(event, 'itinerary')">📅 Itinerary</button>
-    <button class="tab-btn" onclick="switchTab(event, 'map-tab')" id="map-tab-btn">🗺️ Map</button>
+    <button class="tab-btn active" onclick="switchTab(event, 'itinerary')">📅 Itinerary & Map</button>
     <button class="tab-btn" onclick="switchTab(event, 'bookings')">🏨 Bookings</button>
     <button class="tab-btn" onclick="switchTab(event, 'budget')">💰 Budget</button>
     <button class="tab-btn" onclick="switchTab(event, 'notes')">💡 Tips</button>
@@ -323,402 +347,62 @@
       Route: Tallinn ✈️ Istanbul → Saigon → Cát Tiên 🌳 → Đà Lạt ⛰️ → ✈️ Đà Nẵng 🏄 → Hội An 🏮 → ✈️ Cần Thơ 🛶 → Saigon ✈️ TLL
     </div>
 
-    <!-- TAB 1: ITINERARY -->
+    <!-- TAB 1: ITINERARY & MAP SPLIT VIEW -->
     <div id="itinerary" class="tab-content active">
-      <div class="card">
-        <h3 class="section-title">Tap any day to view details & locate on map</h3>
-        <div class="timeline">
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '11 Dec: Departure from Tallinn via TK1422 & TK162')">
-            <div class="timeline-date">11 Dec</div>
-            <div class="timeline-content">
-              <h3>Departure from Tallinn</h3>
-              <ul>
-                <li>✈️ <strong>TK1422:</strong> Tallinn (TLL) 12:00 → Istanbul (IST) 16:45[cite: 2]</li>
-                <li>✈️ <strong>TK162:</strong> Istanbul (IST) 02:25 (12 Dec) → Saigon (SGN) 16:30[cite: 2]</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '12 Dec: Arrive SGN 16:30. Check-in Lafayette De Saigon Building (Room 1BR#01). Dinner.')">
-            <div class="timeline-date">12 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon Arrival</h3>
-              <ul>
-                <li>✈️ Arrive SGN 16:30[cite: 2]</li>
-                <li>🏨 Check-in: Lafayette De Saigon Building (Room 1BR#01)</li>
-                <li>🍽️ Dinner & settle in</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '13 Dec: Full day exploring Saigon (Ho Chi Minh City)')">
-            <div class="timeline-date">13 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon</h3>
-              <ul>
-                <li>🏙️ Full day exploring Saigon (Ho Chi Minh City)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Cát Tiên National Park', '14 Dec: Private transfer (~3.5–4h). Vietnature wildlife tour: rainforest + night wildlife safari. Sleep in Cát Tiên.')">
-            <div class="timeline-date">14 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon → Cát Tiên</h3>
-              <ul>
-                <li>🚗 Private transfer (~3.5–4 hours)</li>
-                <li>🌳 Vietnature wildlife tour: rainforest + night wildlife safari</li>
-                <li>🏠 Sleep in Cát Tiên</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '15 Dec: Early morning wildlife + Bàu Sấu / Crocodile Lake hike. Private transfer to Tuyền Lâm Lake (~3.5–4h). Sleep near Tuyền Lâm.')">
-            <div class="timeline-date">15 Dec</div>
-            <div class="timeline-content">
-              <h3>Cát Tiên → Đà Lạt / Tuyền Lâm</h3>
-              <ul>
-                <li>🐊 Early morning wildlife + Bàu Sấu / Crocodile Lake hike</li>
-                <li>🚗 Private transfer to Tuyền Lâm Lake (~3.5–4 hours)</li>
-                <li>🏠 Sleep near Tuyền Lâm Lake</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '16 Dec: Kayak or SUP on Tuyền Lâm Lake. Pine forest / relaxed nature day.')">
-            <div class="timeline-date">16 Dec</div>
-            <div class="timeline-content">
-              <h3>Tuyền Lâm / Đà Lạt</h3>
-              <ul>
-                <li>🛶 Kayak or SUP on Tuyền Lâm Lake</li>
-                <li>🌲 Pine forest / relaxed nature day</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '17 Dec: Coffee farm & countryside tour. Pongour Waterfall visit. Private driver for the full day.')">
-            <div class="timeline-date">17 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Lạt Highlands</h3>
-              <ul>
-                <li>☕ Coffee farm & countryside tour</li>
-                <li>💦 Pongour Waterfall visit</li>
-                <li>🚗 Private driver for the full day</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Đà Nẵng', '18 Dec: Relaxed morning in Đà Lạt. Flight 19:55 DLI → DAD (~21:00). Sleep in Đà Nẵng.')">
-            <div class="timeline-date">18 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Lạt → Đà Nẵng</h3>
-              <ul>
-                <li>🌲 Relaxed morning / extra time in Đà Lạt</li>
-                <li>✈️ Flight: 19:55 DLI → DAD (~21:00)</li>
-                <li>🏠 Sleep in Đà Nẵng</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Đà Nẵng', '19 Dec: Surf at My Khe / nearby beach. Sơn Trà Peninsula / local food / city exploration.')">
-            <div class="timeline-date">19 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Nẵng</h3>
-              <ul>
-                <li>🏄 Surf at My Khe / nearby beach</li>
-                <li>🌊 Sơn Trà Peninsula / local food / city exploration</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Hội An', '20 Dec: Optional morning surf session. Marble Mountains en route. Evening in Hội An Ancient Town.')">
-            <div class="timeline-date">20 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Nẵng → Hội An</h3>
-              <ul>
-                <li>🏄 Optional morning surf session</li>
-                <li>⛰️ Marble Mountains en route</li>
-                <li>🏮 Evening in Hội An Ancient Town</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Hội An', '21 Dec: Cycle through rice fields, local villages and countryside. Ancient Town lights and lantern evening.')">
-            <div class="timeline-date">21 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🚲 Cycle through rice fields, local villages and countryside</li>
-                <li>🏮 Ancient Town lights and lantern evening</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Hội An', '22 Dec: Kỳ Anh wartime tunnels + Vietnamese Heroic Mother monument/museum. Private guide/driver. (Move to 23 Dec if weather poor).')">
-            <div class="timeline-date">22 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An / Kỳ Anh</h3>
-              <ul>
-                <li>🪖 Kỳ Anh wartime tunnels + Vietnamese Heroic Mother monument/museum</li>
-                <li>🚗 Private guide/driver</li>
-                <li>🌧️ <em>Note: Move to 23 Dec if tunnel/weather conditions are poor</em></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Hội An', '23 Dec: Flexible surf day / An Bàng Beach / Đà Nẵng. Food tasting / countryside exploration.')">
-            <div class="timeline-date">23 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🏄 Flexible surf day / An Bàng Beach / Đà Nẵng</li>
-                <li>🍜 Food tasting / countryside exploration if weather isn’t suitable for surfing</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Hội An', '24 Dec: Relaxed day + Christmas Eve celebration in Hội An.')">
-            <div class="timeline-date">24 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🎄 Relaxed day + Christmas Eve celebration in Hội An</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Cần Thơ (Mekong Delta)', '25 Dec: Early transfer to DAD. Flight 10:40 DAD → VCA (~12:10). Afternoon/evening in Mekong Delta. Sleep in Cần Thơ.')">
-            <div class="timeline-date">25 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An → Cần Thơ</h3>
-              <ul>
-                <li>🚗 Early morning transfer to DAD airport</li>
-                <li>✈️ Flight: 10:40 DAD → VCA (Cần Thơ, landing ~12:10)</li>
-                <li>🛶 Afternoon and evening in the Mekong Delta</li>
-                <li>🏠 Sleep in Cần Thơ / countryside</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Cần Thơ (Mekong Delta)', '26 Dec: ~05:00 start. Cái Răng floating market + breakfast on river. Back canals & Phong Điền countryside. Cycling.')">
-            <div class="timeline-date">26 Dec</div>
-            <div class="timeline-content">
-              <h3>Mekong Delta</h3>
-              <ul>
-                <li>⏰ ~05:00 early start</li>
-                <li>🛶 Cái Răng floating market + breakfast on the river</li>
-                <li>🌴 Back canals & Phong Điền countryside</li>
-                <li>🚲 Cycling through fruit orchards and local villages</li>
-                <li>🏠 Sleep in Cần Thơ / countryside</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '27 Dec: Slow morning in Mekong. Private transfer to Saigon (~2.5–3.5h). Final Saigon evening.')">
-            <div class="timeline-date">27 Dec</div>
-            <div class="timeline-content">
-              <h3>Cần Thơ → Saigon</h3>
-              <ul>
-                <li>🌴 Slow morning in the Mekong Delta</li>
-                <li>🚗 Private transfer back to Saigon (~2.5–3.5 hours)</li>
-                <li>🍜 Final Saigon evening & food tour</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '28 Dec: Đầm Sen Water Park / flexible final day. Pack + final dinner. Hotel near airport.')">
-            <div class="timeline-date">28 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon</h3>
-              <ul>
-                <li>💦 Đầm Sen Water Park / flexible final day activities</li>
-                <li>🧳 Packing + final dinner</li>
-                <li>🏠 Prefer hotel near airport</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '29 Dec: TK251 SGN 06:30 → Istanbul → Tallinn 18:00[cite: 3].')">
-            <div class="timeline-date">29 Dec</div>
-            <div class="timeline-content">
-              <h3>Return Flight to Tallinn</h3>
-              <ul>
-                <li>✈️ <strong>TK251:</strong> SGN 06:30 → Istanbul (IST) 13:50[cite: 3]</li>
-                <li>✈️ <strong>TK1423:</strong> Istanbul (IST) 15:25 → Tallinn (TLL) 18:00[cite: 3]</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: MAP -->
-    <div id="map-tab" class="tab-content">
-      <div class="card">
-        <h3 class="section-title">Vietnam Travel Route Map</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Click any marker or select a day from the itinerary to zoom in.</p>
-        <div id="map"></div>
-      </div>
-    </div>
-
-    <!-- TAB 3: BOOKINGS -->
-    <div id="bookings" class="tab-content">
-      <div class="card">
-        <h3 class="section-title">Confirmed Bookings</h3>
+      <div class="dashboard-grid">
         
-        <div class="info-box">
-          <h4>✈️ International Flights (Turkish Airlines)</h4>
-          <p><strong>Booking Reference (PNR):</strong> RGR5ME[cite: 1]</p>
-          <p><strong>Passengers:</strong> Vladimir Runtu, Hille Ermel, Ville Runtu[cite: 4]</p>
-          <p><strong>Total Cost:</strong> EUR 2,212.06[cite: 4]</p>
-          <p><strong>Baggage:</strong> Checked baggage 20 kg, Cabin baggage 1 piece x 8 kg per passenger[cite: 2].</p>
-        </div>
+        <!-- Left Column: Itinerary Timeline -->
+        <div class="card">
+          <h3 class="section-title">Tap any day to zoom map</h3>
+          <div class="timeline-container">
+            <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '11 Dec: Departure from Tallinn via TK1422 & TK162')">
+              <div class="timeline-date">11 Dec</div>
+              <div class="timeline-content">
+                <h3>Departure from Tallinn</h3>
+                <ul>
+                  <li>✈️ <strong>TK1422:</strong> Tallinn (TLL) 12:00 → Istanbul (IST) 16:45[cite: 2]</li>
+                  <li>✈️ <strong>TK162:</strong> Istanbul (IST) 02:25 (12 Dec) → Saigon (SGN) 16:30[cite: 2]</li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="info-box">
-          <h4>🏨 Saigon Accommodation (Booking.com)</h4>
-          <p><strong>Property:</strong> Lafayette De Saigon Building</p>
-          <p><strong>Address:</strong> No. 8 Phung Khac Khoan Street, Sai Gon Ward, HCMC</p>
-          <p><strong>Room Number:</strong> 1BR#01</p>
-          <p><strong>WiFi Password:</strong> <code>8lafayette</code></p>
-          <p><strong>Payment:</strong> €125.00 to be paid on 9 Dec</p>
-        </div>
-      </div>
-    </div>
+            <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '12 Dec: Arrive SGN 16:30. Check-in Lafayette De Saigon Building (Room 1BR#01). Dinner.')">
+              <div class="timeline-date">12 Dec</div>
+              <div class="timeline-content">
+                <h3>Saigon Arrival</h3>
+                <ul>
+                  <li>✈️ Arrive SGN 16:30[cite: 2]</li>
+                  <li>🏨 Check-in: Lafayette De Saigon Building (Room 1BR#01)</li>
+                  <li>🍽️ Dinner & settle in</li>
+                </ul>
+              </div>
+            </div>
 
-    <!-- TAB 4: BUDGET -->
-    <div id="budget" class="tab-content">
-      <div class="card">
-        <h3 class="section-title">Trip Budget & Expenses Overview</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Estimated budget for 3 travelers (2 adults, 1 child) across 18 days.</p>
-        
-        <table class="budget-table">
-          <thead>
-            <tr>
-              <th>Expense Category</th>
-              <th>Estimated Total</th>
-              <th>Already Paid / Booked</th>
-              <th>Remaining Est.</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>International Flights (TK)</strong></td>
-              <td>€2,212.06[cite: 4]</td>
-              <td style="color: var(--accent);">€2,212.06</td>
-              <td>€0.00</td>
-            </tr>
-            <tr>
-              <td><strong>Accommodation</strong> (~18 nights @ ~€50/n)</td>
-              <td>~€900.00</td>
-              <td style="color: var(--accent);">€125.00 <small>(Saigon apt)</small></td>
-              <td>~€775.00</td>
-            </tr>
-            <tr>
-              <td><strong>Domestic Flights</strong> (~€50/p × 3 tickets × 2 flights)</td>
-              <td>~€300.00</td>
-              <td>€0.00</td>
-              <td>~€300.00</td>
-            </tr>
-            <tr>
-              <td><strong>Food, Private Transfers & Tours</strong></td>
-              <td>~€1,200.00</td>
-              <td>€0.00</td>
-              <td>~€1,200.00</td>
-            </tr>
-            <tr>
-              <td>Total Estimated Budget</td>
-              <td>~€4,612.06</td>
-              <td>€2,337.06</td>
-              <td>~€2,275.00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+            <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '13 Dec: Full day exploring Saigon (Ho Chi Minh City)')">
+              <div class="timeline-date">13 Dec</div>
+              <div class="timeline-content">
+                <h3>Saigon</h3>
+                <ul>
+                  <li>🏙️ Full day exploring Saigon (Ho Chi Minh City)</li>
+                </ul>
+              </div>
+            </div>
 
-    <!-- TAB 5: TIPS & INFO -->
-    <div id="notes" class="tab-content">
-      <div class="card">
-        <h3 class="section-title">Essential Travel Tips</h3>
-        <ul class="styled-list">
-          <li><strong>Visas & Entry:</strong> Check Vietnam e-visa requirements well ahead of December 2026. Ensure your passport has at least 6 months validity.</li>
-          <li><strong>Domestic Flights:</strong> Keep an eye on luggage weight restrictions for regional airlines (DLI to DAD and DAD to VCA).</li>
-          <li><strong>Weather in December:</strong> Central Vietnam (Đà Nẵng, Hội An) can experience occasional rain or cooler breezes—keep flexible days for surf/tunnels as planned! South and Highlands are generally pleasant.</li>
-          <li><strong>Transport:</strong> Pre-book private transfers for Cát Tiên and Đà Lạt routes for a smooth trip.</li>
-        </ul>
-      </div>
-    </div>
+            <div class="timeline-item" onclick="openDayOnMap('Cát Tiên National Park', '14 Dec: Private transfer (~3.5–4h). Vietnature wildlife tour: rainforest + night wildlife safari. Sleep in Cát Tiên.')">
+              <div class="timeline-date">14 Dec</div>
+              <div class="timeline-content">
+                <h3>Saigon → Cát Tiên</h3>
+                <ul>
+                  <li>🚗 Private transfer (~3.5–4 hours)</li>
+                  <li>🌳 Vietnature wildlife tour: rainforest + night wildlife safari</li>
+                  <li>🏠 Sleep in Cát Tiên</li>
+                </ul>
+              </div>
+            </div>
 
-  </main>
-
-  <footer>
-    Vietnam Travel Itinerary 2026 · Built for Vlad
-  </footer>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script>
-    let map = null;
-    let markers = {};
-
-    const destinations = {
-      "Saigon (Ho Chi Minh City)": { coords: [10.7769, 106.7009], desc: "Arrival & departure hub, Lafayette De Saigon stay." },
-      "Cát Tiên National Park": { coords: [11.4333, 107.4167], desc: "Rainforest & night wildlife safari." },
-      "Đà Lạt & Tuyền Lâm Lake": { coords: [11.9404, 108.4358], desc: "Pine forests, kayaking, coffee farms, waterfalls." },
-      "Đà Nẵng": { coords: [16.0544, 108.2022], desc: "My Khe beach surfing & Sơn Trà peninsula." },
-      "Hội An": { coords: [15.8801, 108.3380], desc: "Ancient town, cycling, lantern evenings, and Kỳ Anh tunnels." },
-      "Cần Thơ (Mekong Delta)": { coords: [10.0452, 105.7469], desc: "Cái Răng floating market & back canals." }
-    };
-
-    function initMap() {
-      if (!map) {
-        map = L.map('map').setView([14.0583, 108.2772], 6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        for (const [name, data] of Object.entries(destinations)) {
-          const marker = L.marker(data.coords).addTo(map)
-            .bindPopup(`<b>${name}</b><br>${data.desc}`);
-          markers[name] = marker;
-        }
-      } else {
-        map.invalidateSize();
-      }
-    }
-
-    function switchTab(evt, tabName) {
-      const contents = document.querySelectorAll('.tab-content');
-      contents.forEach(content => content.classList.remove('active'));
-
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(tabName).classList.add('active');
-      evt.currentTarget.classList.add('active');
-
-      if (tabName === 'map-tab') {
-        setTimeout(initMap, 200);
-      }
-    }
-
-    function openDayOnMap(locationName, dayDetail) {
-      // Switch to Map Tab
-      const mapBtn = document.getElementById('map-tab-btn');
-      switchTab({ currentTarget: mapBtn }, 'map-tab');
-
-      // Zoom to Location
-      setTimeout(() => {
-        if (markers[locationName]) {
-          map.setView(markers[locationName].getLatLng(), 11);
-          markers[locationName].openPopup();
-        }
-      }, 300);
-    }
-  </script>
-
-</body>
-</html>
+            <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '15 Dec: Early morning wildlife + Bàu Sấu / Crocodile Lake hike. Private transfer to Tuyền Lâm Lake (~3.5–4h). Sleep near Tuyền Lâm.')">
+              <div class="timeline-date">15 Dec</div>
+              <div class="timeline-content">
+                <h3>Cát Tiên → Đà Lạt / Tuyền Lâm</h3>
+                <ul>
+                  <li>🐊 Early morning wildlife + B
