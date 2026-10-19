@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vietnam 2026 Itinerary & Budget</title>
+  <title>Vietnam 2026 Itinerary, Budget & Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Leaflet CSS for interactive map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     :root {
       --bg-color: #f8fafc;
@@ -86,7 +88,7 @@
       padding: 0 1rem;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
     }
 
@@ -221,6 +223,15 @@
       color: var(--text-main);
     }
 
+    /* Map Container */
+    #map {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      z-index: 10;
+    }
+
     /* Budget Table Styling */
     .budget-table {
       width: 100%;
@@ -262,3 +273,17 @@
         flex-direction: column;
         gap: 0.25rem;
       }
+      .timeline-date {
+        min-width: auto;
+      }
+      nav[role="tablist"] {
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .budget-table {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
