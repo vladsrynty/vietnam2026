@@ -148,18 +148,23 @@
       border: 1px solid #bae6fd;
     }
 
+    /* Clickable Timeline Item */
     .timeline-item {
       display: flex;
       gap: 1.25rem;
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-color);
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .timeline-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
+    .timeline-item:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+      transform: translateY(-2px);
     }
 
     .timeline-date {
@@ -167,12 +172,18 @@
       font-weight: 700;
       color: var(--primary-dark);
       font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-content {
+      flex-grow: 1;
     }
 
     .timeline-content h3 {
       font-size: 1.1rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
       color: var(--text-main);
     }
 
@@ -180,11 +191,11 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.25rem;
     }
 
     .timeline-content li {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
     }
 
@@ -315,9 +326,10 @@
     <!-- TAB 1: ITINERARY -->
     <div id="itinerary" class="tab-content active">
       <div class="card">
+        <h3 class="section-title">Tap any day to view details & locate on map</h3>
         <div class="timeline">
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '11 Dec: Departure from Tallinn via TK1422 & TK162')">
             <div class="timeline-date">11 Dec</div>
             <div class="timeline-content">
               <h3>Departure from Tallinn</h3>
@@ -328,7 +340,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '12 Dec: Arrive SGN 16:30. Check-in Lafayette De Saigon Building (Room 1BR#01). Dinner.')">
             <div class="timeline-date">12 Dec</div>
             <div class="timeline-content">
               <h3>Saigon Arrival</h3>
@@ -340,7 +352,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '13 Dec: Full day exploring Saigon (Ho Chi Minh City)')">
             <div class="timeline-date">13 Dec</div>
             <div class="timeline-content">
               <h3>Saigon</h3>
@@ -350,7 +362,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Cát Tiên National Park', '14 Dec: Private transfer (~3.5–4h). Vietnature wildlife tour: rainforest + night wildlife safari. Sleep in Cát Tiên.')">
             <div class="timeline-date">14 Dec</div>
             <div class="timeline-content">
               <h3>Saigon → Cát Tiên</h3>
@@ -362,7 +374,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '15 Dec: Early morning wildlife + Bàu Sấu / Crocodile Lake hike. Private transfer to Tuyền Lâm Lake (~3.5–4h). Sleep near Tuyền Lâm.')">
             <div class="timeline-date">15 Dec</div>
             <div class="timeline-content">
               <h3>Cát Tiên → Đà Lạt / Tuyền Lâm</h3>
@@ -374,7 +386,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '16 Dec: Kayak or SUP on Tuyền Lâm Lake. Pine forest / relaxed nature day.')">
             <div class="timeline-date">16 Dec</div>
             <div class="timeline-content">
               <h3>Tuyền Lâm / Đà Lạt</h3>
@@ -385,7 +397,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Đà Lạt & Tuyền Lâm Lake', '17 Dec: Coffee farm & countryside tour. Pongour Waterfall visit. Private driver for the full day.')">
             <div class="timeline-date">17 Dec</div>
             <div class="timeline-content">
               <h3>Đà Lạt Highlands</h3>
@@ -397,7 +409,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Đà Nẵng', '18 Dec: Relaxed morning in Đà Lạt. Flight 19:55 DLI → DAD (~21:00). Sleep in Đà Nẵng.')">
             <div class="timeline-date">18 Dec</div>
             <div class="timeline-content">
               <h3>Đà Lạt → Đà Nẵng</h3>
@@ -409,7 +421,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Đà Nẵng', '19 Dec: Surf at My Khe / nearby beach. Sơn Trà Peninsula / local food / city exploration.')">
             <div class="timeline-date">19 Dec</div>
             <div class="timeline-content">
               <h3>Đà Nẵng</h3>
@@ -420,7 +432,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Hội An', '20 Dec: Optional morning surf session. Marble Mountains en route. Evening in Hội An Ancient Town.')">
             <div class="timeline-date">20 Dec</div>
             <div class="timeline-content">
               <h3>Đà Nẵng → Hội An</h3>
@@ -432,7 +444,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Hội An', '21 Dec: Cycle through rice fields, local villages and countryside. Ancient Town lights and lantern evening.')">
             <div class="timeline-date">21 Dec</div>
             <div class="timeline-content">
               <h3>Hội An</h3>
@@ -443,7 +455,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Hội An', '22 Dec: Kỳ Anh wartime tunnels + Vietnamese Heroic Mother monument/museum. Private guide/driver. (Move to 23 Dec if weather poor).')">
             <div class="timeline-date">22 Dec</div>
             <div class="timeline-content">
               <h3>Hội An / Kỳ Anh</h3>
@@ -455,7 +467,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Hội An', '23 Dec: Flexible surf day / An Bàng Beach / Đà Nẵng. Food tasting / countryside exploration.')">
             <div class="timeline-date">23 Dec</div>
             <div class="timeline-content">
               <h3>Hội An</h3>
@@ -466,7 +478,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Hội An', '24 Dec: Relaxed day + Christmas Eve celebration in Hội An.')">
             <div class="timeline-date">24 Dec</div>
             <div class="timeline-content">
               <h3>Hội An</h3>
@@ -476,7 +488,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Cần Thơ (Mekong Delta)', '25 Dec: Early transfer to DAD. Flight 10:40 DAD → VCA (~12:10). Afternoon/evening in Mekong Delta. Sleep in Cần Thơ.')">
             <div class="timeline-date">25 Dec</div>
             <div class="timeline-content">
               <h3>Hội An → Cần Thơ</h3>
@@ -489,7 +501,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Cần Thơ (Mekong Delta)', '26 Dec: ~05:00 start. Cái Răng floating market + breakfast on river. Back canals & Phong Điền countryside. Cycling.')">
             <div class="timeline-date">26 Dec</div>
             <div class="timeline-content">
               <h3>Mekong Delta</h3>
@@ -503,7 +515,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '27 Dec: Slow morning in Mekong. Private transfer to Saigon (~2.5–3.5h). Final Saigon evening.')">
             <div class="timeline-date">27 Dec</div>
             <div class="timeline-content">
               <h3>Cần Thơ → Saigon</h3>
@@ -515,7 +527,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '28 Dec: Đầm Sen Water Park / flexible final day. Pack + final dinner. Hotel near airport.')">
             <div class="timeline-date">28 Dec</div>
             <div class="timeline-content">
               <h3>Saigon</h3>
@@ -527,7 +539,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" onclick="openDayOnMap('Saigon (Ho Chi Minh City)', '29 Dec: TK251 SGN 06:30 → Istanbul → Tallinn 18:00[cite: 3].')">
             <div class="timeline-date">29 Dec</div>
             <div class="timeline-content">
               <h3>Return Flight to Tallinn</h3>
@@ -546,7 +558,7 @@
     <div id="map-tab" class="tab-content">
       <div class="card">
         <h3 class="section-title">Vietnam Travel Route Map</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Click markers for details on each stop along your itinerary.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Click any marker or select a day from the itinerary to zoom in.</p>
         <div id="map"></div>
       </div>
     </div>
@@ -649,6 +661,34 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     let map = null;
+    let markers = {};
+
+    const destinations = {
+      "Saigon (Ho Chi Minh City)": { coords: [10.7769, 106.7009], desc: "Arrival & departure hub, Lafayette De Saigon stay." },
+      "Cát Tiên National Park": { coords: [11.4333, 107.4167], desc: "Rainforest & night wildlife safari." },
+      "Đà Lạt & Tuyền Lâm Lake": { coords: [11.9404, 108.4358], desc: "Pine forests, kayaking, coffee farms, waterfalls." },
+      "Đà Nẵng": { coords: [16.0544, 108.2022], desc: "My Khe beach surfing & Sơn Trà peninsula." },
+      "Hội An": { coords: [15.8801, 108.3380], desc: "Ancient town, cycling, lantern evenings, and Kỳ Anh tunnels." },
+      "Cần Thơ (Mekong Delta)": { coords: [10.0452, 105.7469], desc: "Cái Răng floating market & back canals." }
+    };
+
+    function initMap() {
+      if (!map) {
+        map = L.map('map').setView([14.0583, 108.2772], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        for (const [name, data] of Object.entries(destinations)) {
+          const marker = L.marker(data.coords).addTo(map)
+            .bindPopup(`<b>${name}</b><br>${data.desc}`);
+          markers[name] = marker;
+        }
+      } else {
+        map.invalidateSize();
+      }
+    }
 
     function switchTab(evt, tabName) {
       const contents = document.querySelectorAll('.tab-content');
@@ -661,32 +701,22 @@
       evt.currentTarget.classList.add('active');
 
       if (tabName === 'map-tab') {
-        setTimeout(() => {
-          if (!map) {
-            map = L.map('map').setView([14.0583, 108.2772], 6); // Centered over Vietnam
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 18,
-              attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-
-            const destinations = [
-              { name: "Saigon (Ho Chi Minh City)", coords: [10.7769, 106.7009], desc: "Arrival & departure hub, Lafayette De Saigon stay." },
-              { name: "Cát Tiên National Park", coords: [11.4333, 107.4167], desc: "Rainforest & night wildlife safari." },
-              { name: "Đà Lạt & Tuyền Lâm Lake", coords: [11.9404, 108.4358], desc: "Pine forests, kayaking, coffee farms, waterfalls." },
-              { name: "Đà Nẵng", coords: [16.0544, 108.2022], desc: "My Khe beach surfing & Sơn Trà peninsula." },
-              { name: "Hội An", coords: [15.8801, 108.3380], desc: "Ancient town, cycling, lantern evenings, and Kỳ Anh tunnels." },
-              { name: "Cần Thơ (Mekong Delta)", coords: [10.0452, 105.7469], desc: "Cái Răng floating market & back canals." }
-            ];
-
-            destinations.forEach(dest => {
-              L.marker(dest.coords).addTo(map)
-                .bindPopup(`<b>${dest.name}</b><br>${dest.desc}`);
-            });
-          } else {
-            map.invalidateSize();
-          }
-        }, 200);
+        setTimeout(initMap, 200);
       }
+    }
+
+    function openDayOnMap(locationName, dayDetail) {
+      // Switch to Map Tab
+      const mapBtn = document.getElementById('map-tab-btn');
+      switchTab({ currentTarget: mapBtn }, 'map-tab');
+
+      // Zoom to Location
+      setTimeout(() => {
+        if (markers[locationName]) {
+          map.setView(markers[locationName].getLatLng(), 11);
+          markers[locationName].openPopup();
+        }
+      }, 300);
     }
   </script>
 
