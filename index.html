@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vietnam 2026 Itinerary</title>
+  <title>Vietnam 2026 Itinerary & Budget</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -207,6 +207,46 @@
       color: var(--text-main);
     }
 
+    .info-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1rem;
+    }
+
+    .info-box h4 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    /* Budget Table Styling */
+    .budget-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .budget-table th, .budget-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .budget-table th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .budget-table tr:last-child td {
+      border-bottom: none;
+      font-weight: 700;
+      background: #f1f5f9;
+    }
+
     footer {
       text-align: center;
       margin-top: 4rem;
@@ -222,286 +262,3 @@
         flex-direction: column;
         gap: 0.25rem;
       }
-      .timeline-date {
-        min-width: auto;
-      }
-      nav[role="tablist"] {
-        overflow-x: auto;
-        justify-content: flex-start;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>🇻🇳 Vietnam Trip 2026</h1>
-    <p>12 Dec – 29 Dec 2026 · Comprehensive Itinerary & Travel Plan</p>
-    <div class="header-stats">
-      <div class="stat-badge"><b>18</b> <span>Days</span></div>
-      <div class="stat-badge"><b>7</b> <span>Main Destinations</span></div>
-      <div class="stat-badge"><b>🇻🇳</b> <span>South to Central & Mekong</span></div>
-    </div>
-  </header>
-
-  <nav role="tablist">
-    <button class="tab-btn active" onclick="switchTab(event, 'itinerary')">📅 Itinerary</button>
-    <button class="tab-btn tab-btn-notes" onclick="switchTab(event, 'notes')">💡 Tips & Info</button>
-  </nav>
-
-  <main>
-    <!-- ROUTE SUMMARY BANNER -->
-    <div class="route-banner">
-      Route: Saigon → Cát Tiên 🌳 → Đà Lạt/Tuyền Lâm ⛰️ → ✈️ Đà Nẵng 🏄 → Hội An 🏮 → ✈️ Cần Thơ/Mekong 🛶 → Saigon
-    </div>
-
-    <!-- TAB 1: ITINERARY -->
-    <div id="itinerary" class="tab-content active">
-      <div class="card">
-        <div class="timeline">
-
-          <div class="timeline-item">
-            <div class="timeline-date">12 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon</h3>
-              <ul>
-                <li>✈️ Arrive SGN 16:30 → Hotel check-in → Dinner</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">13 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon</h3>
-              <ul>
-                <li>🏙️ Full day exploring Saigon (Ho Chi Minh City)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">14 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon → Cát Tiên</h3>
-              <ul>
-                <li>🚗 Private transfer (~3.5–4 hours)</li>
-                <li>🌳 Vietnature wildlife tour: rainforest + night wildlife safari</li>
-                <li>🏠 Sleep in Cát Tiên</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">15 Dec</div>
-            <div class="timeline-content">
-              <h3>Cát Tiên → Đà Lạt / Tuyền Lâm</h3>
-              <ul>
-                <li>🐊 Early morning wildlife + Bàu Sấu / Crocodile Lake hike</li>
-                <li>🚗 Private transfer to Tuyền Lâm Lake (~3.5–4 hours)</li>
-                <li>🏠 Sleep near Tuyền Lâm Lake</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">16 Dec</div>
-            <div class="timeline-content">
-              <h3>Tuyền Lâm / Đà Lạt</h3>
-              <ul>
-                <li>🛶 Kayak or SUP on Tuyền Lâm Lake</li>
-                <li>🌲 Pine forest / relaxed nature day</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">17 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Lạt Highlands</h3>
-              <ul>
-                <li>☕ Coffee farm & countryside tour</li>
-                <li>💦 Pongour Waterfall visit</li>
-                <li>🚗 Private driver for the full day</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">18 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Lạt → Đà Nẵng</h3>
-              <ul>
-                <li>🌲 Relaxed morning / extra time in Đà Lạt</li>
-                <li>✈️ Flight: 19:55 DLI → DAD (landing ~21:00)</li>
-                <li>🏠 Sleep in Đà Nẵng</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">19 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Nẵng</h3>
-              <ul>
-                <li>🏄 Surf at My Khe / nearby beach</li>
-                <li>🌊 Sơn Trà Peninsula / local food / city exploration (depending on surf conditions)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">20 Dec</div>
-            <div class="timeline-content">
-              <h3>Đà Nẵng → Hội An</h3>
-              <ul>
-                <li>🏄 Optional morning surf session</li>
-                <li>⛰️ Marble Mountains en route</li>
-                <li>🏮 Evening in Hội An Ancient Town</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">21 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🚲 Cycle through rice fields, local villages and countryside</li>
-                <li>🏮 Ancient Town lights and lantern evening</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">22 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An / Kỳ Anh</h3>
-              <ul>
-                <li>🪖 Kỳ Anh wartime tunnels + Vietnamese Heroic Mother monument/museum</li>
-                <li>🚗 Private guide/driver</li>
-                <li>🌧️ <em>Note: Move to 23 Dec if tunnel/weather conditions are poor</em></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">23 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🏄 Flexible surf day / An Bàng Beach / Đà Nẵng</li>
-                <li>🍜 Food tasting / countryside exploration if weather isn’t suitable for surfing</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">24 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An</h3>
-              <ul>
-                <li>🎄 Relaxed day + Christmas Eve celebration in Hội An</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">25 Dec</div>
-            <div class="timeline-content">
-              <h3>Hội An → Cần Thơ</h3>
-              <ul>
-                <li>🚗 Early morning transfer to DAD airport</li>
-                <li>✈️ Flight: 10:40 DAD → VCA (Cần Thơ, landing ~12:10)</li>
-                <li>🛶 Afternoon and evening in the Mekong Delta</li>
-                <li>🏠 Sleep in Cần Thơ / countryside homestay/hotel</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">26 Dec</div>
-            <div class="timeline-content">
-              <h3>Mekong Delta</h3>
-              <ul>
-                <li>⏰ ~05:00 early start</li>
-                <li>🛶 Cái Răng floating market + breakfast on the river</li>
-                <li>🌴 Back canals & Phong Điền countryside</li>
-                <li>🚲 Cycling through fruit orchards and local villages</li>
-                <li>🏠 Sleep in Cần Thơ / countryside</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">27 Dec</div>
-            <div class="timeline-content">
-              <h3>Cần Thơ → Saigon</h3>
-              <ul>
-                <li>🌴 Slow morning in the Mekong Delta</li>
-                <li>🚗 Private transfer back to Saigon (~2.5–3.5 hours)</li>
-                <li>🍜 Final Saigon evening & food tour</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">28 Dec</div>
-            <div class="timeline-content">
-              <h3>Saigon</h3>
-              <ul>
-                <li>💦 Đầm Sen Water Park / flexible final day activities</li>
-                <li>🧳 Packing + final dinner</li>
-                <li>🏠 Preferred hotel near Saigon airport</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">29 Dec</div>
-            <div class="timeline-content">
-              <h3>Departure</h3>
-              <ul>
-                <li>✈️ 06:30 flight home</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: TIPS & INFO -->
-    <div id="notes" class="tab-content">
-      <div class="card">
-        <h3 class="section-title">Essential Travel Tips</h3>
-        <ul class="styled-list">
-          <li><strong>Visas & Entry:</strong> Check Vietnam e-visa requirements well ahead of December 2026. Ensure your passport has at least 6 months validity.</li>
-          <li><strong>Domestic Flights:</strong> Keep an eye on luggage weight restrictions for regional airlines (e.g., DLI to DAD and DAD to VCA).</li>
-          <li><strong>Weather in December:</strong> Central Vietnam (Đà Nẵng, Hội An) can experience occasional rain or cooler breezes—keep flexible days for surf/tunnels as planned! South and Highlands are generally pleasant.</li>
-          <li><strong>Transport:</strong> Pre-book private transfers for Cát Tiên and Đà Lạt routes for a smooth trip.</li>
-        </ul>
-      </div>
-    </div>
-
-  </main>
-
-  <footer>
-    Vietnam Travel Itinerary 2026 · Built for Vlad
-  </footer>
-
-  <script>
-    function switchTab(evt, tabName) {
-      const contents = document.querySelectorAll('.tab-content');
-      contents.forEach(content => content.classList.remove('active'));
-
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(tabName).classList.add('active');
-      evt.currentTarget.classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
